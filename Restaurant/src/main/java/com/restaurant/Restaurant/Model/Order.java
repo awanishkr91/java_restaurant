@@ -8,7 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.Set;
+
 
 
 @Entity
@@ -25,18 +28,19 @@ public class Order {
 	@Column(name="ORDER_DATE")
 	private String orderDate;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name="order_id")
-	private Customer customer;
 	
-	public Customer getCustomer() {
-		return customer;
+	  public Set<Customer> getCustomers() {
+		return customers;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setCustomers(Set<Customer> customers) {
+		this.customers = customers;
 	}
 
+	@OneToMany(mappedBy="order")
+	  private Set<Customer> customers;
+	 
+	
 	public int getOrderId() {
 		return orderId;
 	}

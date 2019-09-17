@@ -17,36 +17,29 @@ public class UserServiceImpl implements UsersService{
 	@Autowired
 	private UsersDao usersDao;
 	
-	@Override
-	public List<Users> getUser() {
-		return usersDao.getUser();
-	}
-
-	@Override
-	public void createUser(Users user) {
-		usersDao.createUser(user);
-		
-	}
-
-	@Override
-	public Users findById(int id) {
-		return usersDao.findById(id);
-	}
-
-	@Override
-	public Users update(Users currentUser, int user_id) {
-		return usersDao.update(currentUser,user_id);
-		
-	}
-
-	@Override
-	public void deleteUserById(int id) {
-		usersDao.deleteUserById(id);		
-	}
-
-	@Override
-	public Users updatePartially(Users currentUser, int id) {
-		return usersDao.updatePartially(currentUser,id);
-	}
+	
+	  @Override public List<Users> getUser() { return usersDao.getUser(); }
+	  
+	  @Override public void createUser(Users user) { usersDao.createUser(user);
+	  
+	  }
+	  
+	  @Override public Users findById(int id) { return usersDao.findById(id); }
+	  
+	  @Override public Users update(Users currentUser, int user_id) 
+	  {
+		  return usersDao.update(currentUser,user_id);
+	  
+	  }
+	  
+	  @Override public void deleteUserById(int id) 
+	  { 
+		  usersDao.deleteUserById(id);
+		 }
+	  
+	  @Override public Users updatePartially(Users currentUser, int id) { 
+		  return usersDao.updatePartially(currentUser,id); 
+		  }
+	 
 
 }

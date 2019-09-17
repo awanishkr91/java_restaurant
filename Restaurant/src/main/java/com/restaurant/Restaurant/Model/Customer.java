@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -32,19 +34,20 @@ public class Customer {
 	@Column(name="CUSTOMER_Address")
 	private String cust_address;
 	
-	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval =true )
-	private List<Order> orders = new ArrayList<Order>();
+	@ManyToOne(optional = false)
+	@JoinColumn(name="order")
+	private Order order;
 	
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
 	public int getCust_id() {
 		return cust_id;
-	}
-
-	public List<Order> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
 	}
 
 	public void setCust_id(int cust_id) {

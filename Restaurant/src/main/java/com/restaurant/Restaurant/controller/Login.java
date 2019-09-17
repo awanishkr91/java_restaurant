@@ -2,7 +2,9 @@ package com.restaurant.Restaurant.controller;
 
 
 import java.util.List;
+import java.util.Optional;
 
+import org.apache.jasper.Options;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -39,54 +41,43 @@ public class Login {
 	}
 	
 	
-	  @PostMapping(value="/create", consumes = MediaType.APPLICATION_JSON_VALUE)
-	    public ResponseEntity<Void> createUser(@RequestBody Users user, UriComponentsBuilder ucBuilder){
-	        System.out.println("Creating User "+user.getUser_id());
-	        userService.createUser(user);
-	        HttpHeaders headers = new HttpHeaders();
-	        headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(user.getUser_id()).toUri());
-	        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
-	    }
-	   
-	  @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	    public ResponseEntity<Users> getUserById(@PathVariable("id") int id) {
-	        System.out.println("Fetching User with id " + id);
-	        Users user = userService.findById(id);
-	        if (user == null) {
-	            return new ResponseEntity<Users>(HttpStatus.NOT_FOUND);
-	        }
-	        return new ResponseEntity<Users>(user,HttpStatus.OK);
-	    }
-	  
-	  @PutMapping(value="/update", headers="Accept=application/json")
-	    public ResponseEntity<String> updateUser(@RequestBody Users currentUser)
-	    {
-	        System.out.println("sd");
-	        Users user = userService.findById(currentUser.getUser_id());
-	        if (user==null) {
-	            return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
-	        }
-	        userService.update(currentUser, currentUser.getUser_id());
-	        return new ResponseEntity<String>(HttpStatus.OK);
-	    }
-	  
-	  @DeleteMapping(value="/{id}", headers ="Accept=application/json")
-	    public ResponseEntity<Login> deleteUser(@PathVariable("id") int id){
-		  Users user = userService.findById(id);
-	        if (user == null) {
-	            return new ResponseEntity<Login>(HttpStatus.NOT_FOUND);
-	        }
-	        userService.deleteUserById(id);
-	        return new ResponseEntity<Login>(HttpStatus.NO_CONTENT);
-	    }
-	  
-	  @PatchMapping(value="/{id}", headers="Accept=application/json")
-	    public ResponseEntity<Users> updateUserPartially(@PathVariable("id") int id, @RequestBody Users currentUser){
-		  Users user = userService.findById(id);
-	        if(user ==null){
-	            return new ResponseEntity<Users>(HttpStatus.NOT_FOUND);
-	        }
-	        Users usr = userService.updatePartially(currentUser, id);
-	        return new ResponseEntity<Users>(usr, HttpStatus.OK);
-	    }
+	/*
+	 * @PostMapping(value="/create", consumes = MediaType.APPLICATION_JSON_VALUE)
+	 * public ResponseEntity<Void> createUser(@RequestBody Users user,
+	 * UriComponentsBuilder ucBuilder){
+	 * System.out.println("Creating User "+user.getUser_id());
+	 * userService.createUser(user); HttpHeaders headers = new HttpHeaders();
+	 * headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(user.
+	 * getUser_id()).toUri()); return new ResponseEntity<Void>(headers,
+	 * HttpStatus.CREATED); }
+	 * 
+	 * @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	 * public ResponseEntity<Users> getUserById(@PathVariable("id") long id) {
+	 * System.out.println("Fetching User with id " + id); Optional<Users> user =
+	 * userService.findById(id); if (user == null) { return new
+	 * ResponseEntity<Users>(HttpStatus.NOT_FOUND); } return new
+	 * ResponseEntity<Users>(HttpStatus.OK); }
+	 * 
+	 * @PutMapping(value="/update", headers="Accept=application/json") public
+	 * ResponseEntity<String> updateUser(@RequestBody Users currentUser) {
+	 * System.out.println("sd"); Options<Users> user =
+	 * userService.findById(currentUser.getUser_id()); if (user==null) { return new
+	 * ResponseEntity<String>(HttpStatus.NOT_FOUND); }
+	 * userService.update(currentUser, currentUser.getUser_id()); return new
+	 * ResponseEntity<String>(HttpStatus.OK); }
+	 * 
+	 * @DeleteMapping(value="/{id}", headers ="Accept=application/json") public
+	 * ResponseEntity<Login> deleteUser(@PathVariable("id") int id){ Users user =
+	 * userService.findById(id); if (user == null) { return new
+	 * ResponseEntity<Login>(HttpStatus.NOT_FOUND); }
+	 * userService.deleteUserById(id); return new
+	 * ResponseEntity<Login>(HttpStatus.NO_CONTENT); }
+	 * 
+	 * @PatchMapping(value="/{id}", headers="Accept=application/json") public
+	 * ResponseEntity<Users> updateUserPartially(@PathVariable("id") int
+	 * id, @RequestBody Users currentUser){ Users user = userService.findById(id);
+	 * if(user ==null){ return new ResponseEntity<Users>(HttpStatus.NOT_FOUND); }
+	 * Users usr = userService.updatePartially(currentUser, id); return new
+	 * ResponseEntity<Users>(usr, HttpStatus.OK); }
+	 */
 }
