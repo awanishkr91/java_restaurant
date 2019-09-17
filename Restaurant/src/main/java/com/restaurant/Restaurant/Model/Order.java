@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -28,6 +29,14 @@ public class Order {
 	@Column(name="ORDER_DATE")
 	private String orderDate;
 	
+
+	@OneToMany
+	@JoinTable(name = "Customer_Order",joinColumns = @JoinColumn(name="orderId"),inverseJoinColumns = @JoinColumn(name="cust_id"))
+	 private Set<Customer> customers;
+	
+	@OneToMany
+	@JoinTable(name = "FOOD_ORDER",joinColumns=@JoinColumn(name="orderId"),inverseJoinColumns =@JoinColumn(name="foodId"))
+	private Set<Foods> foods;
 	
 	  public Set<Customer> getCustomers() {
 		return customers;
@@ -37,9 +46,14 @@ public class Order {
 		this.customers = customers;
 	}
 
-	@OneToMany(mappedBy="order")
-	  private Set<Customer> customers;
-	 
+	public Set<Foods> getFoods() {
+		return foods;
+	}
+
+	public void setFoods(Set<Foods> foods) {
+		this.foods = foods;
+	}
+
 	
 	public int getOrderId() {
 		return orderId;
