@@ -16,7 +16,27 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Users implements Serializable{
 
-   private static final long serialVersionUID = 1L;
+   public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue
@@ -40,7 +60,17 @@ public class Users implements Serializable{
 	@Column(name="PASSWORD")
 	private String password;
 	
-	
+	@Column(name="CREATED_DATE",nullable = true)
+	private Date createdDate;
+		
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
