@@ -33,9 +33,11 @@ public class Foods implements Serializable{
 	@Column(name="FOOD_IMAGE")
 	private String foodImg;
 	
-	@ManyToOne(optional = false)
-	@JoinColumn(name="foods")
-	private Foods foods;
+	/*
+	 * @ManyToOne(optional = false)
+	 * 
+	 * @JoinColumn(name="foods") private Foods foods;
+	 */
 	
 	public int getFoodId() {
 		return foodId;
@@ -77,13 +79,11 @@ public class Foods implements Serializable{
 		this.foodImg = foodImg;
 	}
 
-	public Foods getFoods() {
-		return foods;
-	}
-
-	public void setFoods(Foods foods) {
-		this.foods = foods;
-	}
+	/*
+	 * public Foods getFoods() { return foods; }
+	 * 
+	 * public void setFoods(Foods foods) { this.foods = foods; }
+	 */
 
 	
 	

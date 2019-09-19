@@ -30,29 +30,32 @@ public class Order {
 	private String orderDate;
 	
 
-	@OneToMany
-	@JoinTable(name = "Customer_Order",joinColumns = @JoinColumn(name="orderId"),inverseJoinColumns = @JoinColumn(name="cust_id"))
-	 private Set<Customer> customers;
+	/*
+	 * @OneToMany
+	 * 
+	 * @JoinTable(name = "Customer_Order",joinColumns
+	 * = @JoinColumn(name="orderId"),inverseJoinColumns
+	 * = @JoinColumn(name="cust_id")) private Set<Customer> customers;
+	 * 
+	 * @OneToMany
+	 * 
+	 * @JoinTable(name =
+	 * "FOOD_ORDER",joinColumns=@JoinColumn(name="orderId"),inverseJoinColumns
+	 * =@JoinColumn(name="foodId")) private Set<Foods> foods;
+	 */
 	
-	@OneToMany
-	@JoinTable(name = "FOOD_ORDER",joinColumns=@JoinColumn(name="orderId"),inverseJoinColumns =@JoinColumn(name="foodId"))
-	private Set<Foods> foods;
-	
-	  public Set<Customer> getCustomers() {
-		return customers;
-	}
+	/*
+	 * public Set<Customer> getCustomers() { return customers; }
+	 * 
+	 * public void setCustomers(Set<Customer> customers) { this.customers =
+	 * customers; }
+	 */
 
-	public void setCustomers(Set<Customer> customers) {
-		this.customers = customers;
-	}
-
-	public Set<Foods> getFoods() {
-		return foods;
-	}
-
-	public void setFoods(Set<Foods> foods) {
-		this.foods = foods;
-	}
+	/*
+	 * public Set<Foods> getFoods() { return foods; }
+	 * 
+	 * public void setFoods(Set<Foods> foods) { this.foods = foods; }
+	 */
 
 	
 	public int getOrderId() {

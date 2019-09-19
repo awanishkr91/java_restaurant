@@ -35,17 +35,15 @@ public class Customer {
 	@Column(name="CUSTOMER_Address")
 	private String cust_address;
 	
-	@ManyToOne(optional = false)
-	@JoinColumn(name="order")
-	private Order order;
-	
-	public Order getOrder() {
-		return order;
-	}
-
-	public void setOrder(Order order) {
-		this.order = order;
-	}
+	/*
+	 * @ManyToOne(optional = false)
+	 * 
+	 * @JoinColumn(name="order") private Order order;
+	 * 
+	 * public Order getOrder() { return order; }
+	 * 
+	 * public void setOrder(Order order) { this.order = order; }
+	 */
 
 	public int getCust_id() {
 		return cust_id;
